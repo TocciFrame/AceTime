@@ -1,0 +1,41 @@
+@page "/"
+
+<div class="relative h-screen w-full flex items-center justify-center bg-black overflow-hidden font-['Plus_Jakarta_Sans']">
+    
+    <!-- THE PICTURE: Absolute background -->
+    <div class="absolute inset-0 z-0">
+        <img src="/tennis.jpg" class="w-full h-full object-cover opacity-60" alt="Background" />
+        <!-- Dark tint so you can see the white text clearly -->
+        <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    
+    <!-- LOGO -->
+    <div class="absolute top-12 left-12 text-white font-[800] italic text-2xl tracking-tighter z-20">
+        Ace<span class="font-[400] not-italic opacity-70 text-gray-200">Time</span>
+    </div>
+
+    <!-- LOGIN GLASS CARD -->
+    <div class="glass relative z-10 p-12 rounded-[40px] w-full max-w-md shadow-2xl mx-4">
+        <h2 class="text-white text-4xl font-[800] mb-10 tracking-tight uppercase">Log In</h2>
+        
+        <div class="space-y-6">
+            <div class="space-y-2">
+                <label class="text-gray-300 text-[11px] font-bold uppercase tracking-widest">Email Address</label>
+                <input type="email" class="w-full bg-white rounded-xl py-4 px-5 text-black outline-none border-none" placeholder="name@email.com" />
+            </div>
+            <div class="space-y-2">
+                <label class="text-gray-300 text-[11px] font-bold uppercase tracking-widest">Password</label>
+                <input type="password" class="w-full bg-white rounded-xl py-4 px-5 text-black outline-none border-none" placeholder="••••••••" />
+            </div>
+            
+            <a href="/home" class="block w-full bg-[#D97706] hover:bg-orange-600 text-white text-center font-[800] py-5 rounded-2xl shadow-xl uppercase tracking-tighter mt-4 transition-all active:scale-[0.98]">
+                Sign In
+            </a>
+
+            <p class="text-center text-sm text-gray-400 mt-8 font-medium">
+                Don't have an account? 
+                <a href="/register" class="text-white font-bold hover:underline ml-1">Sign Up</a>
+            </p>
+        </div>
+    </div>
+</div>
