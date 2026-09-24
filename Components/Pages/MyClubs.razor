@@ -1,0 +1,54 @@
+@page "/myclubs"
+
+<div class="p-10 max-w-7xl mx-auto">
+    <header class="flex justify-between items-end mb-12">
+        <div>
+            <h1 class="text-5xl font-[800] tracking-tighter text-slate-900">My Clubs</h1>
+            <p class="text-slate-400 font-medium mt-2">Manage your memberships and connected communities.</p>
+        </div>
+        <button class="bg-[#111111] text-white px-8 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest hover:bg-orange-600 transition-all">+ Find New Clubs</button>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Club Card 1 -->
+        <div class="bg-white border border-slate-100 rounded-[40px] p-8 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-[100px] -z-10 group-hover:bg-orange-50 transition-colors"></div>
+            
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center text-2xl">🎾</div>
+                <div>
+                    <h3 class="text-xl font-[800] tracking-tight text-slate-900">Brooklyn Aces</h3>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Member</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="bg-slate-50 p-4 rounded-2xl">
+                    <p class="text-[9px] font-black text-slate-400 uppercase">Members</p>
+                    <p class="text-lg font-black italic">1.2k</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-2xl">
+                    <p class="text-[9px] font-black text-slate-400 uppercase">Your Rank</p>
+                    <p class="text-lg font-black italic">#14</p>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-6 border-t border-slate-50">
+                <div class="flex -space-x-2">
+                    <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200"></div>
+                    <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-300"></div>
+                    <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-800 text-[8px] text-white flex items-center justify-center">+40</div>
+                </div>
+                <a href="/home" class="text-xs font-bold text-slate-900 hover:text-orange-500 uppercase tracking-widest">View Activity →</a>
+            </div>
+        </div>
+
+        <!-- Placeholder for Empty State/Adding -->
+        <div class="border-2 border-dashed border-slate-200 rounded-[40px] flex flex-col items-center justify-center p-12 text-center group hover:border-orange-200 transition-all">
+            <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">➕</div>
+            <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest">Discover Local Communities</h4>
+        </div>
+
+    </div>
+</div>
