@@ -5,24 +5,106 @@
 @inject NavigationManager NavManager
 @rendermode InteractiveServer
 
-<div class="p-10 max-w-5xl mx-auto font-['Plus_Jakarta_Sans'] pb-32">
-    @* ... (The rest of the HTML I gave you) ... *@
+<div class="p-10 max-w-6xl mx-auto font-['Plus_Jakarta_Sans'] pb-32">
+    
+    <!-- 1. HEADER SECTION -->
     <header class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
         <div>
             <a href="/profile" class="group text-slate-400 font-bold text-[10px] uppercase tracking-[0.3em] mb-4 flex items-center gap-2 hover:text-orange-500 transition-colors">
-                ← Back to Passport
+                <span class="transform group-hover:-translate-x-1 transition-transform">←</span> Back to Passport
             </a>
-            <h1 class="text-5xl font-[800] tracking-tighter text-slate-900 uppercase italic">Edit Profile</h1>
+            <h1 class="text-6xl font-[800] tracking-tighter text-slate-900 uppercase italic">Edit Profile</h1>
         </div>
         
         <div class="flex gap-4">
-            <button @onclick='() => NavManager.NavigateTo("/profile")' class="px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest text-slate-400 hover:bg-slate-100 transition-all">Cancel</button>
-            <button @onclick='() => NavManager.NavigateTo("/profile")' class="px-10 py-4 bg-[#10B981] text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-lg shadow-emerald-200 hover:bg-emerald-600 transition-all">Save Changes</button>
+            <button @onclick='() => NavManager.NavigateTo("/profile")' 
+                    class="px-8 py-4 rounded-2xl text-xs font-[900] uppercase tracking-widest text-slate-400 hover:bg-slate-100 transition-all">
+                Cancel
+            </button>
+            <button @onclick='() => NavManager.NavigateTo("/profile")' 
+                    class="px-10 py-4 bg-[#10B981] text-white rounded-2xl text-xs font-[900] uppercase tracking-widest shadow-lg shadow-emerald-200 hover:bg-emerald-600 hover:-translate-y-0.5 transition-all active:scale-95">
+                Save Changes
+            </button>
         </div>
     </header>
 
-    @* The Bindings causing the red lines will now work! *@
-    <input type="text" @bind="ProfileService.User.Name" class="w-full bg-slate-50 border-none rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 outline-none focus:ring-2 focus:ring-orange-500/20" />
-    
-    @* ... (Rest of the file) ... *@
+    <!-- 2. MAIN LAYOUT GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- LEFT COLUMN: PHOTO & IDENTITY (4/12 width) -->
+        <div class="lg:col-span-4 space-y-8">
+            <!-- Profile Photo Card -->
+            <div class="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm text-center group">
+                <div class="relative w-40 h-40 mx-auto mb-6">
+                    <img src="https://i.pravatar.cc/400?u=alex" class="w-full h-full rounded-full object-cover border-4 border-white shadow-2xl" />
+                    <label class="absolute bottom-1 right-1 bg-[#111111] text-white p-3 rounded-full border-4 border-white cursor-pointer hover:bg-orange-500 transition-all shadow-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <input type="file" class="hidden" />
+                    </label>
+                </div>
+                <h4 class="text-xs font-black text-slate-900 uppercase tracking-widest">Athlete Portrait</h4>
+                <p class="text-[10px] text-slate-400 mt-1 uppercase font-bold tracking-tighter">Recommended: Square 800x800</p>
+            </div>
+
+            <!-- Identity Inputs Card -->
+            <div class="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm space-y-8">
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3 ml-1">Display Name</label>
+                    <input type="text" @bind="ProfileService.User.Name" 
+                           class="w-full bg-slate-50 border-none rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 outline-none focus:ring-2 focus:ring-orange-500/20 transition-all" />
+                </div>
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3 ml-1">Current City</label>
+                    <input type="text" @bind="ProfileService.User.Location" 
+                           class="w-full bg-slate-50 border-none rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 outline-none focus:ring-2 focus:ring-orange-500/20 transition-all" />
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: BIO & RATINGS (8/12 width) -->
+        <div class="lg:col-span-8 space-y-8">
+            <!-- Bio Card -->
+            <div class="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm">
+                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 ml-1 italic">Athlete Biography</label>
+                <textarea rows="4" @bind="ProfileService.User.Bio" 
+                          class="w-full bg-slate-50 border-none rounded-[30px] py-6 px-8 text-sm font-medium text-slate-600 outline-none focus:ring-2 focus:ring-orange-500/20 transition-all leading-relaxed"
+                          placeholder="Tell the community about your background and play style..."></textarea>
+            </div>
+
+            <!-- Sports & Ratings Card -->
+            <div class="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm">
+                <h3 class="text-xl font-[800] uppercase italic tracking-tighter mb-10 border-l-4 border-orange-500 pl-4 text-slate-900">Sports & Ratings</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🎾</span>
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Tennis (UTR)</label>
+                        </div>
+                        <input type="number" step="0.1" @bind="ProfileService.User.TennisRating" 
+                               class="w-full bg-slate-50 border-none rounded-2xl py-6 px-8 text-3xl font-black italic text-slate-900 outline-none focus:ring-2 focus:ring-orange-500/20 transition-all" />
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🥒</span>
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Pickleball (DUPR)</label>
+                        </div>
+                        <input type="number" step="0.1" @bind="ProfileService.User.PickleballRating" 
+                               class="w-full bg-slate-50 border-none rounded-2xl py-6 px-8 text-3xl font-black italic text-slate-900 outline-none focus:ring-2 focus:ring-orange-500/20 transition-all" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style Tags Card -->
+            <div class="bg-white p-10 rounded-[40px] border border-slate-100 shadow-sm">
+                <h3 class="text-xl font-[800] uppercase italic tracking-tighter mb-6 text-slate-900">Style Preferences</h3>
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-orange-500 text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-md">Aggressive Baseliner</button>
+                    <button class="bg-slate-50 text-slate-400 border border-slate-100 px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:text-orange-500 transition-all">Strategic Dinker</button>
+                    <button class="bg-slate-50 text-slate-400 border border-slate-100 px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:text-orange-500 transition-all">Net Rusher</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

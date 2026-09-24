@@ -4,35 +4,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/" />
+    <!-- 1. Pure Tailwind Integration -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,800&display=swap" rel="stylesheet">
-    <style>
-        * { font-family: 'Plus Jakarta Sans', sans-serif !important; }
-        
-        /* Glass effect for Login/Register cards */
-        .glass { 
-            background: rgba(24, 24, 27, 0.85); 
-            backdrop-filter: blur(16px); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
+    <script>
+        // Custom Tailwind Config to match Figma tokens
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    borderRadius: { '4xl': '40px', '5xl': '50px' }
+                }
+            }
         }
-
-        /* Hide scrollbar for the Tournament section */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { 
-            -ms-overflow-style: none; 
-            scrollbar-width: none; 
-            display: flex; 
-            overflow-x: auto; 
-            scroll-snap-type: x mandatory; 
-        }
-        
-        .tournament-card { scroll-snap-align: start; }
-    </style>
+    </script>
     <HeadOutlet />
 </head>
-<body class="bg-slate-50">
+<body class="bg-slate-50 antialiased selection:bg-orange-500/30">
     <Routes />
     <script src="_framework/blazor.web.js"></script>
 </body>
