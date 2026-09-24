@@ -1,0 +1,97 @@
+@page "/openplays"
+
+<div class="p-10 max-w-7xl mx-auto">
+    <!-- Header & Search -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
+        <div>
+            <h1 class="text-5xl font-[800] tracking-tighter text-slate-900">Find a Game</h1>
+            <p class="text-slate-400 font-medium mt-2">Browse open sessions hosted by clubs near you.</p>
+        </div>
+        
+        <div class="relative w-full md:w-96">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 opacity-40">🔍</span>
+            <input type="text" placeholder="Search sports, clubs, or parks..." 
+                   class="w-full pl-12 pr-4 py-4 bg-white border border-slate-100 rounded-2xl shadow-sm outline-none focus:ring-2 focus:ring-orange-500/20" />
+        </div>
+    </header>
+
+    <!-- Sport Filters -->
+    <div class="flex gap-3 mb-12 overflow-x-auto no-scrollbar pb-2">
+        <button class="bg-[#111111] text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest">All Sports</button>
+        <button class="bg-white border border-slate-100 text-slate-500 px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:border-orange-500 hover:text-orange-500 transition-all">Pickleball</button>
+        <button class="bg-white border border-slate-100 text-slate-500 px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:border-orange-500 hover:text-orange-500 transition-all">Tennis</button>
+        <button class="bg-white border border-slate-100 text-slate-500 px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:border-orange-500 hover:text-orange-500 transition-all">Volleyball</button>
+        <button class="bg-white border border-slate-100 text-slate-500 px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest hover:border-orange-500 hover:text-orange-500 transition-all">Padel</button>
+    </div>
+
+    <!-- Sessions Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Open Play Card 1 -->
+        <div class="bg-white border border-slate-100 rounded-[40px] p-8 shadow-sm hover:shadow-2xl transition-all duration-500 group">
+            <div class="flex justify-between items-start mb-6">
+                <div class="flex flex-col gap-1">
+                    <span class="text-[10px] font-black text-orange-500 uppercase tracking-[0.2em]">Pickleball</span>
+                    <h3 class="text-2xl font-[800] tracking-tight">Intermediate Open Play</h3>
+                </div>
+                <div class="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-lg text-[9px] font-black uppercase">Level 3.5+</div>
+            </div>
+
+            <div class="space-y-4 mb-8">
+                <div class="flex items-center gap-3 text-slate-500">
+                    <span class="text-lg">🕒</span>
+                    <p class="text-sm font-bold text-slate-700">Today, 6:00 PM - 8:00 PM</p>
+                </div>
+                <div class="flex items-center gap-3 text-slate-500">
+                    <span class="text-lg">📍</span>
+                    <p class="text-sm font-bold text-slate-700">McCarren Park <span class="font-normal opacity-60">• Court 4</span></p>
+                </div>
+            </div>
+
+            <!-- Attendance Info -->
+            <div class="bg-slate-50 rounded-3xl p-5 mb-8">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex -space-x-3">
+                        @for(int i=0; i<4; i++) {
+                            <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+                                <img src="https://i.pravatar.cc/100?u=@i" />
+                            </div>
+                        }
+                        <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-800 text-white flex items-center justify-center text-[10px] font-bold">+4</div>
+                    </div>
+                    <span class="text-[10px] font-black text-orange-600 uppercase">8 / 12 Spots Filled</span>
+                </div>
+                <div class="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
+                    <div class="h-full bg-orange-500 w-[66%] transition-all duration-1000"></div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-6 border-t border-slate-50">
+                <div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Entry Fee</p>
+                    <p class="text-xl font-black">$12.00</p>
+                </div>
+                <button class="bg-[#111111] text-white px-8 py-3.5 rounded-2xl text-xs font-bold hover:bg-orange-600 transition-all">Join Session</button>
+            </div>
+        </div>
+
+        <!-- Open Play Card 2 (Waitlist Example) -->
+        <div class="bg-white border border-slate-100 rounded-[40px] p-8 shadow-sm group opacity-90">
+             <div class="flex justify-between items-start mb-6">
+                <div class="flex flex-col gap-1">
+                    <span class="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em]">Tennis</span>
+                    <h3 class="text-2xl font-[800] tracking-tight">Advanced Drill Session</h3>
+                </div>
+                <div class="bg-orange-50 text-orange-600 px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-tighter">Full</div>
+            </div>
+
+            <div class="space-y-4 mb-8 opacity-60">
+                <div class="flex items-center gap-3"><span class="text-lg">🕒</span><p class="text-sm font-bold">Mon, Oct 1 • 7:00 PM</p></div>
+                <div class="flex items-center gap-3"><span class="text-lg">📍</span><p class="text-sm font-bold">East River Park</p></div>
+            </div>
+
+            <button class="w-full py-4 border-2 border-slate-100 text-slate-400 rounded-2xl font-bold uppercase text-xs tracking-widest hover:border-orange-500 hover:text-orange-500 transition-all">Join Waitlist (2)</button>
+        </div>
+
+    </div>
+</div>

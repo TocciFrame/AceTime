@@ -27,18 +27,21 @@
             </div>
 
             <nav class="flex-1 space-y-2">
-                <!-- Fix 1: Active highlight logic applied here -->
                 <a href="/home" class="@GetActiveClass("home")">
                     <span>🏠</span> Home
+                </a>
+                
+                <!-- NEW: Open Plays Link -->
+                <a href="/openplays" class="@GetActiveClass("openplays")">
+                    <span>🎾</span> Open Plays
                 </a>
                 
                 <a href="/tournaments" class="@GetActiveClass("tournaments")">
                     <span>🏆</span> Tournaments
                 </a>
                 
-                <!-- Fix 2: Changed href so it doesn't navigate to "/" (Logout) -->
-                <a href="/home" class="@GetActiveClass("courts")">
-                    <span>🎾</span> Find Courts
+                <a href="#" class="@GetActiveClass("clubs")">
+                    <span>🤝</span> My Clubs
                 </a>
             </nav>
 
