@@ -1,152 +1,139 @@
 ﻿@page "/home"
 
 <div class="min-h-screen bg-[#F8FAFC] font-['Plus_Jakarta_Sans'] text-slate-900">
-    
-    <main class="pb-24">
-        <!-- 1. HERO SECTION -->
-        <section class="max-w-7xl mx-auto px-6 pt-8">
-            <div class="relative rounded-[50px] h-[600px] shadow-2xl bg-slate-800" 
-                 style="background-image: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 70%), url('tennis.jpg'); background-size: cover; background-position: center;">
+    <main class="max-w-[1600px] mx-auto px-6 py-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- LEFT & CENTER: MAIN CONTENT (9 Columns) -->
+            <div class="lg:col-span-9 space-y-12">
                 
-                <!-- Content Wrapper -->
-                <div class="relative z-10 h-full flex flex-col justify-center px-16">
-                    <h1 class="text-white text-7xl font-[800] leading-[0.95] tracking-tighter max-w-2xl uppercase italic">
-                        FIND YOUR GAME.<br />ANYTIME, ANYWHERE.
-                    </h1>
+                <!-- HERO SECTION -->
+                <section class="relative rounded-[50px] h-[550px] shadow-2xl bg-slate-800 overflow-hidden" 
+                         style="background-image: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 70%), url('/tennis.jpeg'); background-size: cover; background-position: center;">
+                    <div class="relative z-10 h-full flex flex-col justify-center px-12">
+                        <h1 class="text-white text-6xl font-[800] leading-[0.95] tracking-tighter max-w-xl uppercase italic">
+                            FIND YOUR GAME.<br />ANYTIME, ANYWHERE.
+                        </h1>
+                        <div class="flex flex-col md:flex-row items-start md:items-end gap-6 mt-8">
+                            <p class="text-gray-200 text-sm max-w-xs font-medium opacity-90 leading-relaxed">
+                                Join local clubs, enter community tournaments, and track your progress.
+                            </p>
+                            <a href="/openplays" class="bg-white text-black font-[800] px-8 py-4 rounded-full flex items-center gap-3 shadow-2xl hover:bg-orange-500 hover:text-white transition-all group whitespace-nowrap">
+                                <span class="text-[11px] uppercase tracking-widest">Join an Open Play</span>
+                                <div class="bg-black text-white rounded-full p-1 flex items-center justify-center font-bold">↗</div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
 
-                    <!-- SUBTEXT & BUTTON WRAPPER (Beside each other) -->
-                    <div class="flex flex-col md:flex-row items-start md:items-end gap-10 mt-8">
-                        <p class="text-gray-200 text-lg max-w-sm font-medium leading-relaxed opacity-90">
-                            Join local clubs, enter community tournaments, and track your progress in the sports you love.
-                        </p>
-                        
-                        <a href="/openplays" class="bg-white text-black font-[800] px-10 py-4 rounded-full flex items-center gap-3 shadow-2xl hover:bg-orange-500 hover:text-white transition-all group whitespace-nowrap mb-1">
-                            <span class="text-sm uppercase tracking-tight">Join an Open Play</span>
-                            <div class="bg-black text-white rounded-full p-1.5 flex items-center justify-center font-bold group-hover:bg-white group-hover:text-black">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                <!-- TOURNAMENTS SECTION -->
+                <section>
+                    <div class="flex justify-between items-end mb-8">
+                        <h2 class="text-4xl font-[800] tracking-tighter uppercase italic">Compete. Win.</h2>
+                        <div class="flex gap-2">
+                            <a href="/tournaments" class="px-5 py-2.5 border border-slate-200 rounded-xl text-[10px] font-bold uppercase tracking-widest bg-white">Browse All</a>
+                            <a href="/create-tournament" class="px-5 py-2.5 bg-[#10B981] text-white rounded-xl text-[10px] font-bold uppercase tracking-widest shadow-lg">+ Create</a>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6 overflow-x-auto pb-6 no-scrollbar scroll-smooth">
+                        @for(int i=0; i<3; i++) {
+                            <div class="tournament-card min-w-[380px] bg-white border border-slate-100 rounded-[32px] overflow-hidden hover:shadow-xl transition-all group p-2">
+                                <div class="h-44 relative rounded-[24px] overflow-hidden">
+                                    <img src="/tennis.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" />
+                                    <span class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-lg text-[9px] font-black uppercase">Double Elimination</span>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-[800] tracking-tight">Brooklyn Summer Slam</h3>
+                                    <div class="mt-6 flex items-center justify-between">
+                                        <p class="text-xl font-black">$80 <span class="text-[10px] text-slate-400 font-bold uppercase">/ team</span></p>
+                                        <button class="bg-[#111111] text-white px-6 py-2.5 rounded-xl text-[10px] font-bold uppercase tracking-widest group-hover:bg-orange-600 transition-colors">Join →</button>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
+                        }
                     </div>
-                </div>
-
-                <!-- Floating Black Action Bar -->
-                <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[92%] z-20">
-                    <div class="bg-[#0c0c0e] rounded-[32px] p-10 grid grid-cols-3 shadow-2xl border border-white/5">
-                        <div class="flex flex-col items-center text-center border-r border-gray-800 px-6">
-                            <span class="text-xl mb-2">🤝</span>
-                            <h4 class="text-white font-bold text-[11px] uppercase tracking-widest">Join a Club</h4>
-                            <p class="text-gray-500 text-[9px] mt-1">Connect with local players</p>
-                        </div>
-                        <div class="flex flex-col items-center text-center border-r border-gray-800 px-6">
-                            <span class="text-xl mb-2">🏅</span>
-                            <h4 class="text-white font-bold text-[11px] uppercase tracking-widest">Compete</h4>
-                            <p class="text-gray-500 text-[9px] mt-1">Enter local tournaments</p>
-                        </div>
-                        <div class="flex flex-col items-center text-center px-6">
-                            <span class="text-xl mb-2">📈</span>
-                            <h4 class="text-white font-bold text-[11px] uppercase tracking-widest">Rankings</h4>
-                            <p class="text-gray-500 text-[9px] mt-1">Track your match history</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. TOURNAMENTS SECTION (THE CARDS) -->
-        <section class="max-w-7xl mx-auto px-6 mt-40">
-            <div class="flex justify-between items-end mb-10">
-                <div>
-                    <span class="bg-orange-50 text-orange-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase border border-orange-100 italic">🏆 Organized Play</span>
-                    <h2 class="text-5xl font-[800] mt-4 tracking-tighter uppercase">Compete. Win. Repeat.</h2>
-                </div>
-                <div class="flex gap-3">
-                    <a href="/tournaments" class="px-8 py-3.5 border border-slate-200 rounded-2xl text-sm font-bold bg-white hover:bg-slate-50 transition-all">Browse All</a>
-                    <a href="/create-tournament" class="px-8 py-3.5 bg-[#10B981] text-white rounded-2xl text-sm font-bold shadow-lg hover:bg-emerald-600 transition-all">+ Create</a>
-                </div>
+                </section>
             </div>
 
-            <!-- Horizontal Scrollable Grid -->
-            <div class="flex gap-8 overflow-x-auto pb-12 no-scrollbar scroll-smooth px-2">
-                
-                <!-- Tournament Card 1 -->
-                <a href="/tournaments" class="tournament-card block min-w-[420px] bg-white border border-slate-100 rounded-[40px] overflow-hidden hover:shadow-2xl transition-all group">
-                    <div class="h-60 relative overflow-hidden bg-slate-900">
-                        <img src="tennis.jpeg" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-700" />
-                        <div class="absolute top-6 left-6">
-                            <div class="bg-red-600 text-white px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest animate-pulse flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 bg-white rounded-full"></span> Live Now
+            <!-- RIGHT: THE SIDELINE (3 Columns) -->
+            <aside class="lg:col-span-3 space-y-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-xs font-[900] uppercase italic tracking-[0.2em] text-slate-400 flex items-center gap-2">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                        </span>
+                        The Sideline
+                    </h3>
+                    <span class="text-[9px] font-bold text-slate-300 uppercase">Live Updates</span>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Activity 1 -->
+                    <div class="bg-white border border-slate-100 p-4 rounded-3xl shadow-sm hover:border-orange-200 transition-all cursor-pointer group">
+                        <div class="flex gap-3">
+                            <img src="https://i.pravatar.cc/100?u=1" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" />
+                            <div class="flex-1">
+                                <p class="text-[11px] leading-tight">
+                                    <span class="font-black text-slate-900">Marcus Wright</span> joined 
+                                    <span class="font-black text-orange-500">Open Play: 4.0 Singles</span>
+                                </p>
+                                <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">2 mins ago</p>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-[800] tracking-tight text-slate-900 uppercase">Brooklyn Summer Slam</h3>
-                        <div class="flex items-center gap-4 mt-3">
-                            <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">🗓️ Aug 9—10, 2026</span>
-                            <span class="bg-orange-50 text-orange-600 px-2 py-1 rounded text-[10px] font-black uppercase tracking-tighter">🏆 Prize $1,200</span>
-                        </div>
-                        <div class="mt-8 pt-8 border-t border-slate-50 flex items-center justify-between">
-                            <div>
-                                <p class="text-[10px] uppercase font-bold text-slate-400">Entry Fee</p>
-                                <p class="text-2xl font-black text-slate-900">$80 <span class="text-xs font-medium text-slate-400">/ team</span></p>
-                            </div>
-                            <div class="bg-[#111111] text-white px-8 py-3.5 rounded-2xl text-xs font-bold group-hover:bg-orange-600 transition-colors">View Bracket →</div>
-                        </div>
-                    </div>
-                </a>
 
-                <!-- Tournament Card 2 -->
-                <a href="/tournaments" class="tournament-card block min-w-[420px] bg-white border border-slate-100 rounded-[40px] overflow-hidden hover:shadow-2xl transition-all group">
-                    <div class="h-60 relative overflow-hidden bg-slate-900">
-                        <img src="tennis.jpeg" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-700" />
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-[800] tracking-tight text-slate-900 uppercase">NYC Pickleball Open</h3>
-                        <div class="flex items-center gap-4 mt-3">
-                            <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">🗓️ Aug 23—24, 2026</span>
-                            <span class="bg-orange-50 text-orange-600 px-2 py-1 rounded text-[10px] font-black uppercase tracking-tighter">🏆 Prize $800</span>
-                        </div>
-                        <div class="mt-8 pt-8 border-t border-slate-50 flex items-center justify-between">
-                            <div>
-                                <p class="text-[10px] uppercase font-bold text-slate-400">Entry Fee</p>
-                                <p class="text-2xl font-black text-slate-900">$60 <span class="text-xs font-medium text-slate-400">/ team</span></p>
+                    <!-- Activity 2 -->
+                    <div class="bg-white border border-slate-100 p-4 rounded-3xl shadow-sm hover:border-orange-200 transition-all cursor-pointer">
+                        <div class="flex gap-3">
+                            <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center font-black text-xs border-2 border-white shadow-sm italic">W</div>
+                            <div class="flex-1">
+                                <p class="text-[11px] leading-tight">
+                                    <span class="font-black text-slate-900">Sarah Chen</span> posted result: 
+                                    <span class="font-black text-emerald-600">6-2, 6-4 Win</span>
+                                </p>
+                                <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">1 hour ago</p>
                             </div>
-                            <div class="bg-[#111111] text-white px-8 py-3.5 rounded-2xl text-xs font-bold group-hover:bg-orange-600 transition-colors">View Bracket →</div>
                         </div>
                     </div>
-                </a>
-            </div>
-        </section>
 
-        <!-- 3. STATS RIBBON -->
-        <section class="max-w-7xl mx-auto px-6 mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="bg-white rounded-3xl p-8 border border-slate-50 shadow-sm flex items-center gap-4">
-                <span class="text-2xl">👟</span>
-                <div>
-                    <h4 class="text-2xl font-black">12,400+</h4>
-                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Players</p>
+                    <!-- Activity 3 -->
+                    <div class="bg-white border border-slate-100 p-4 rounded-3xl shadow-sm hover:border-orange-200 transition-all cursor-pointer">
+                        <div class="flex gap-3 text-slate-900">
+                            <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-sm shadow-sm">🏙️</div>
+                            <div class="flex-1">
+                                <p class="text-[11px] leading-tight">
+                                    <span class="font-black text-slate-900">Brooklyn Aces</span> posted 4 new 
+                                    <span class="font-black text-orange-500 underline underline-offset-2">Open Plays</span>
+                                </p>
+                                <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">3 hours ago</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity 4 -->
+                    <div class="bg-white border border-slate-100 p-4 rounded-3xl shadow-sm hover:border-orange-200 transition-all cursor-pointer group">
+                        <div class="flex gap-3">
+                            <img src="https://i.pravatar.cc/100?u=8" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" />
+                            <div class="flex-1">
+                                <p class="text-[11px] leading-tight">
+                                    <span class="font-black text-slate-900">Elena G.</span> entered 
+                                    <span class="font-black text-orange-500">Summer Slam Bracket</span>
+                                </p>
+                                <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">Yesterday</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- More Button -->
+                    <button class="w-full py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-orange-500 transition-all bg-slate-50 rounded-2xl border border-dashed border-slate-200 mt-2">
+                        View Full Activity
+                    </button>
                 </div>
-            </div>
-            <div class="bg-white rounded-3xl p-8 border border-slate-50 shadow-sm flex items-center gap-4">
-                <span class="text-2xl">🎯</span>
-                <div>
-                    <h4 class="text-2xl font-black">847</h4>
-                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Games This Week</p>
-                </div>
-            </div>
-            <div class="bg-white rounded-3xl p-8 border border-slate-50 shadow-sm flex items-center gap-4">
-                <span class="text-2xl">📍</span>
-                <div>
-                    <h4 class="text-2xl font-black">230</h4>
-                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Listed Venues</p>
-                </div>
-            </div>
-            <div class="bg-white rounded-3xl p-8 border border-slate-50 shadow-sm flex items-center gap-4">
-                <span class="text-2xl">⭐</span>
-                <div>
-                    <h4 class="text-2xl font-black">4.8</h4>
-                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Avg Host Rating</p>
-                </div>
-            </div>
-        </section>
+            </aside>
+
+        </div>
     </main>
 </div>
