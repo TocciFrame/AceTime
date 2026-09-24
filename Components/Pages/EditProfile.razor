@@ -1,88 +1,28 @@
 @page "/edit-profile"
+@using BlazorApp1.Services
+@using BlazorApp1.Models
+@inject ProfileService ProfileService
 @inject NavigationManager NavManager
+@rendermode InteractiveServer
 
 <div class="p-10 max-w-5xl mx-auto font-['Plus_Jakarta_Sans'] pb-32">
-    
-    <!-- Header with Back Button -->
-    <header class="flex items-center justify-between mb-12">
+    @* ... (The rest of the HTML I gave you) ... *@
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
         <div>
-            <a href="/profile" class="text-slate-400 font-bold text-[10px] uppercase tracking-[0.3em] hover:text-orange-500 transition-all flex items-center gap-2 mb-4">
+            <a href="/profile" class="group text-slate-400 font-bold text-[10px] uppercase tracking-[0.3em] mb-4 flex items-center gap-2 hover:text-orange-500 transition-colors">
                 ← Back to Passport
             </a>
             <h1 class="text-5xl font-[800] tracking-tighter text-slate-900 uppercase italic">Edit Profile</h1>
         </div>
+        
         <div class="flex gap-4">
-            <button @onclick='() => NavManager.NavigateTo("/profile")' class="px-8 py-4 rounded-2xl text-xs font-bold text-slate-400 hover:bg-slate-100 transition-all uppercase">Cancel</button>
-            <button @onclick='() => NavManager.NavigateTo("/profile")' class="px-8 py-4 bg-[#10B981] text-white rounded-2xl text-xs font-bold uppercase shadow-lg shadow-emerald-100 hover:bg-emerald-600 transition-all">Save Changes</button>
+            <button @onclick='() => NavManager.NavigateTo("/profile")' class="px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest text-slate-400 hover:bg-slate-100 transition-all">Cancel</button>
+            <button @onclick='() => NavManager.NavigateTo("/profile")' class="px-10 py-4 bg-[#10B981] text-white rounded-2xl text-xs font-black uppercase tracking-widest shadow-lg shadow-emerald-200 hover:bg-emerald-600 transition-all">Save Changes</button>
         </div>
     </header>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        
-        <!-- LEFT COLUMN: PHOTO & IDENTITY -->
-        <div class="space-y-8">
-            <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm text-center">
-                <div class="relative w-32 h-32 mx-auto mb-6">
-                    <img src="https://i.pravatar.cc/400?u=alex" class="w-full h-full rounded-full object-cover border-4 border-white shadow-lg" />
-                    <button class="absolute bottom-0 right-0 bg-slate-900 text-white p-2 rounded-full border-4 border-white hover:bg-orange-500 transition-all">
-                        📸
-                    </button>
-                </div>
-                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Profile Photo</p>
-            </div>
-
-            <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm space-y-6">
-                <div>
-                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Full Name</label>
-                    <input type="text" value="Alex Rivera" class="w-full bg-slate-50 border-none rounded-xl py-4 px-5 text-sm font-bold outline-none focus:ring-2 focus:ring-orange-500/20" />
-                </div>
-                <div>
-                    <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Location</label>
-                    <input type="text" value="Brooklyn, NY" class="w-full bg-slate-50 border-none rounded-xl py-4 px-5 text-sm font-bold outline-none" />
-                </div>
-            </div>
-        </div>
-
-        <!-- RIGHT COLUMN: BIO & SPORTS SPECS -->
-        <div class="lg:col-span-2 space-y-8">
-            <!-- Bio Section -->
-            <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm">
-                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 block italic">Your Bio</label>
-                <textarea rows="4" class="w-full bg-slate-50 border-none rounded-2xl py-4 px-5 text-sm font-medium outline-none focus:ring-2 focus:ring-orange-500/20 leading-relaxed">Competitive tennis player for 10 years, recently transitioned into the Pickleball pro circuit in NYC. Always looking for high-intensity singles matches.</textarea>
-            </div>
-
-            <!-- Sport Ratings -->
-            <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm">
-                <h3 class="text-xl font-[800] uppercase italic tracking-tighter mb-8">Sports & Ratings</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3">
-                            <span class="text-xl">🎾</span>
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Tennis (UTR)</label>
-                        </div>
-                        <input type="number" step="0.1" value="8.4" class="w-full bg-slate-50 border-none rounded-xl py-4 px-5 text-lg font-black outline-none" />
-                    </div>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3">
-                            <span class="text-xl">🥒</span>
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Pickleball (DUPR)</label>
-                        </div>
-                        <input type="number" step="0.1" value="4.2" class="w-full bg-slate-50 border-none rounded-xl py-4 px-5 text-lg font-black outline-none" />
-                    </div>
-                </div>
-            </div>
-
-            <!-- Play Style Toggles -->
-            <div class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm">
-                <h3 class="text-xl font-[800] uppercase italic tracking-tighter mb-6">Play Style</h3>
-                <div class="flex flex-wrap gap-3">
-                    <button class="bg-orange-500 text-white px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">Aggressive Baseliner</button>
-                    <button class="bg-slate-50 text-slate-400 border border-slate-100 px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-100 transition-all">Net Rusher</button>
-                    <button class="bg-emerald-500 text-white px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">Strategic Dinker</button>
-                    <button class="bg-slate-50 text-slate-400 border border-slate-100 px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-100 transition-all">Counter-Puncher</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @* The Bindings causing the red lines will now work! *@
+    <input type="text" @bind="ProfileService.User.Name" class="w-full bg-slate-50 border-none rounded-2xl py-4 px-6 text-sm font-bold text-slate-900 outline-none focus:ring-2 focus:ring-orange-500/20" />
+    
+    @* ... (Rest of the file) ... *@
 </div>
