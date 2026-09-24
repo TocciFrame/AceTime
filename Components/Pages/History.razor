@@ -1,0 +1,94 @@
+@page "/history"
+
+<div class="p-10 max-w-6xl mx-auto">
+    <!-- Header -->
+    <header class="mb-12">
+        <h1 class="text-5xl font-[800] tracking-tighter text-slate-900">Your Activity</h1>
+        <p class="text-slate-400 font-medium mt-2">Tracking your journey through the courts.</p>
+    </header>
+
+    <!-- Career Stats Ribbon -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Matches</p>
+            <h4 class="text-3xl font-[800]">142</h4>
+        </div>
+        <div class="bg-[#10B981] p-6 rounded-[32px] shadow-lg shadow-emerald-100 text-white">
+            <p class="text-[10px] font-black opacity-80 uppercase tracking-widest mb-1">Win Rate</p>
+            <h4 class="text-3xl font-[800]">68%</h4>
+        </div>
+        <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Tournaments</p>
+            <h4 class="text-3xl font-[800]">12</h4>
+        </div>
+        <div class="bg-[#111111] p-6 rounded-[32px] shadow-xl text-white">
+            <p class="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-1">Career Prize</p>
+            <h4 class="text-3xl font-[800]">$3,450</h4>
+        </div>
+    </div>
+
+    <!-- History Tabs -->
+    <div class="bg-white border border-slate-100 rounded-[40px] overflow-hidden shadow-sm">
+        <div class="flex border-b border-slate-50 bg-slate-50/50">
+            <button class="px-8 py-5 text-xs font-black uppercase tracking-widest border-b-2 border-orange-500 text-slate-900">Match History</button>
+            <button class="px-8 py-5 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-600 transition-all">Tournaments</button>
+        </div>
+
+        <div class="p-4 space-y-2">
+            <!-- Match Row 1 (WIN) -->
+            <div class="flex items-center justify-between p-6 hover:bg-slate-50 rounded-3xl transition-all group">
+                <div class="flex items-center gap-6">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-black text-xl italic">W</div>
+                    <div>
+                        <h4 class="font-[800] text-slate-900 tracking-tight">vs. Jordan Henderson</h4>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tennis • Singles • McCarren Park</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-12">
+                    <div class="text-right">
+                        <p class="text-xl font-black tracking-tighter text-slate-900 italic">6-4, 6-2</p>
+                        <p class="text-[10px] font-bold text-emerald-500 uppercase">Victory</p>
+                    </div>
+                    <p class="text-xs font-bold text-slate-300 w-24 text-right">Sep 22, 2026</p>
+                </div>
+            </div>
+
+            <!-- Match Row 2 (LOSS) -->
+            <div class="flex items-center justify-between p-6 hover:bg-slate-50 rounded-3xl transition-all group">
+                <div class="flex items-center gap-6">
+                    <div class="w-12 h-12 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center font-black text-xl italic">L</div>
+                    <div>
+                        <h4 class="font-[800] text-slate-900 tracking-tight">vs. Brooklyn Aces Club</h4>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Pickleball • Doubles</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-12">
+                    <div class="text-right">
+                        <p class="text-xl font-black tracking-tighter text-slate-900 italic">11-13</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">Defeat</p>
+                    </div>
+                    <p class="text-xs font-bold text-slate-300 w-24 text-right">Sep 18, 2026</p>
+                </div>
+            </div>
+
+            <!-- Tournament Placement Row -->
+            <div class="flex items-center justify-between p-6 bg-orange-50/30 border border-orange-100/50 rounded-3xl mt-4">
+                <div class="flex items-center gap-6">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-2xl flex items-center justify-center text-xl">🏆</div>
+                    <div>
+                        <h4 class="font-[800] text-slate-900 tracking-tight uppercase">Brooklyn Summer Slam</h4>
+                        <p class="text-[10px] font-bold text-orange-600 uppercase tracking-widest">1st Place Winner • $1,200 Prize</p>
+                    </div>
+                </div>
+                
+                <p class="text-xs font-bold text-slate-400">Aug 10, 2026</p>
+            </div>
+        </div>
+        
+        <div class="p-8 text-center bg-slate-50/50">
+            <button class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-orange-500 transition-all">Load older activity</button>
+        </div>
+    </div>
+</div>
