@@ -1,0 +1,118 @@
+@page "/leaderboard"
+
+<div class="p-10 max-w-6xl mx-auto font-['Plus_Jakarta_Sans'] pb-20">
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+        <div>
+            <h1 class="text-5xl font-[800] tracking-tighter text-slate-900 uppercase italic">Rankings</h1>
+            <p class="text-slate-400 font-medium mt-2">The official elite leaderboard for the Brooklyn circuit.</p>
+        </div>
+        
+        <!-- Filter Toggle -->
+        <div class="flex bg-white border border-slate-100 p-1 rounded-2xl shadow-sm">
+            <button class="px-6 py-2.5 bg-[#111111] text-white rounded-xl text-[10px] font-black uppercase tracking-widest">Global</button>
+            <button class="px-6 py-2.5 text-slate-400 rounded-xl text-[10px] font-black uppercase tracking-widest hover:text-slate-900 transition-all">My Clubs</button>
+        </div>
+    </header>
+
+    <!-- 1. THE PODIUM (Top 3 Players) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 items-end">
+        
+        <!-- #2 Silver -->
+        <div class="bg-white border border-slate-100 p-8 rounded-[40px] text-center shadow-sm relative pt-16">
+            <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full border-4 border-slate-200 p-1 bg-white">
+                <img src="https://i.pravatar.cc/150?u=2" class="w-full h-full rounded-full object-cover" />
+            </div>
+            <span class="text-slate-300 font-black text-4xl italic absolute top-4 left-6 opacity-20">#2</span>
+            <h3 class="text-xl font-extrabold text-slate-900 italic">Jordan H.</h3>
+            <p class="text-emerald-500 text-[10px] font-black uppercase mt-1">↑ 1 Spot</p>
+            <div class="mt-6 pt-6 border-t border-slate-50">
+                <p class="text-2xl font-black italic">2,840 <span class="text-[10px] text-slate-400 uppercase font-bold not-italic">pts</span></p>
+            </div>
+        </div>
+
+        <!-- #1 GOLD -->
+        <div class="bg-[#111111] p-10 rounded-[48px] text-center shadow-2xl relative pt-20 scale-105 z-10 border-4 border-orange-500/20">
+            <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-4 border-orange-500 p-1 bg-[#111111]">
+                <img src="https://i.pravatar.cc/150?u=alex" class="w-full h-full rounded-full object-cover" />
+            </div>
+            <div class="absolute top-6 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-[9px] font-black uppercase tracking-widest">
+                🏆 Top Rated
+            </div>
+            <h3 class="text-2xl font-black text-white italic">Alex Rivera</h3>
+            <p class="text-slate-400 text-[10px] font-black uppercase mt-1">Maintaining Peak</p>
+            <div class="mt-8 pt-8 border-t border-white/10">
+                <p class="text-4xl font-black text-white italic tracking-tighter">3,120 <span class="text-xs text-orange-500 uppercase font-bold not-italic">pts</span></p>
+            </div>
+        </div>
+
+        <!-- #3 Bronze -->
+        <div class="bg-white border border-slate-100 p-8 rounded-[40px] text-center shadow-sm relative pt-16">
+            <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full border-4 border-orange-200 p-1 bg-white">
+                <img src="https://i.pravatar.cc/150?u=3" class="w-full h-full rounded-full object-cover" />
+            </div>
+            <span class="text-orange-200 font-black text-4xl italic absolute top-4 left-6 opacity-30">#3</span>
+            <h3 class="text-xl font-extrabold text-slate-900 italic">Sarah Chen</h3>
+            <p class="text-red-400 text-[10px] font-black uppercase mt-1">↓ 1 Spot</p>
+            <div class="mt-6 pt-6 border-t border-slate-50">
+                <p class="text-2xl font-black italic">2,710 <span class="text-[10px] text-slate-400 uppercase font-bold not-italic">pts</span></p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 2. RANKING TABLE -->
+    <div class="bg-white border border-slate-100 rounded-[40px] shadow-sm overflow-hidden">
+        <div class="grid grid-cols-12 p-6 bg-slate-50 border-b border-slate-100 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+            <div class="col-span-1 pl-4">Rank</div>
+            <div class="col-span-4">Player</div>
+            <div class="col-span-2 text-center">Trend</div>
+            <div class="col-span-2 text-center">Points</div>
+            <div class="col-span-2 text-center">W / L</div>
+            <div class="col-span-1 text-right pr-4">Win %</div>
+        </div>
+
+        <div class="divide-y divide-slate-50">
+            @for(int i = 4; i <= 10; i++)
+            {
+                <div class="grid grid-cols-12 p-6 items-center hover:bg-slate-50 transition-all group cursor-pointer">
+                    <!-- Rank -->
+                    <div class="col-span-1 pl-4 font-black text-slate-300 italic text-xl group-hover:text-orange-500 transition-colors">#@i</div>
+                    
+                    <!-- Player Info -->
+                    <div class="col-span-4 flex items-center gap-4">
+                        <div class="w-10 h-10 bg-slate-100 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                            <img src="https://i.pravatar.cc/150?u=@i" />
+                        </div>
+                        <div>
+                            <p class="font-extrabold text-slate-900 tracking-tight">Athlete Name</p>
+                            <p class="text-[9px] font-bold text-slate-400 uppercase">Brooklyn Aces</p>
+                        </div>
+                    </div>
+
+                    <!-- Trend -->
+                    <div class="col-span-2 text-center">
+                        @if(i % 2 == 0) {
+                            <span class="text-emerald-500 text-xs font-black">▲</span>
+                        } else {
+                            <span class="text-red-400 text-xs font-black">▼</span>
+                        }
+                    </div>
+
+                    <!-- Points -->
+                    <div class="col-span-2 text-center font-black text-slate-900 italic">@(3000 - (i * 150))</div>
+
+                    <!-- Win / Loss -->
+                    <div class="col-span-2 text-center font-bold text-slate-500 text-sm">
+                        <span class="text-slate-900 font-black">@(20 - i)</span> / @(i + 2)
+                    </div>
+
+                    <!-- Win % -->
+                    <div class="col-span-1 text-right pr-4">
+                        <span class="bg-slate-50 px-2 py-1 rounded text-[10px] font-black text-slate-900">@(100 - i * 4)%</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
