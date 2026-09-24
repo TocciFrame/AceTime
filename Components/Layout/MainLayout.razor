@@ -1,7 +1,38 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavManager
 
-<div class="min-h-screen">
-    <main>
+<div class="flex h-screen bg-[#F8FAFC] overflow-hidden font-['Plus_Jakarta_Sans']">
+    
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="hidden lg:flex flex-col w-72 bg-white border-r border-slate-100 p-8">
+        <div class="text-2xl font-[800] italic tracking-tighter mb-12">
+            Ace<span class="text-slate-400 not-italic font-[400]">Time</span>
+        </div>
+
+        <nav class="flex-1 space-y-2">
+            <a href="/home" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-50 text-black font-bold">
+                <span>🏠</span> Home
+            </a>
+            <a href="/tournaments" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 font-bold hover:bg-slate-50 hover:text-black transition-all">
+                <span>🏆</span> Tournaments
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 font-bold hover:bg-slate-50 transition-all">
+                <span>🎾</span> Find Courts
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 font-bold hover:bg-slate-50 transition-all">
+                <span>🤝</span> Clubs
+            </a>
+        </nav>
+
+        <div class="pt-8 border-t border-slate-100">
+            <a href="/" class="flex items-center gap-3 px-4 py-3 rounded-xl text-orange-500 font-bold hover:bg-orange-50 transition-all">
+                <span>🚪</span> Log Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 overflow-y-auto relative">
         @Body
     </main>
 </div>

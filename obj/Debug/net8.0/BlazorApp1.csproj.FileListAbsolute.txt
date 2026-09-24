@@ -27,3 +27,4 @@ Z:\L23Y16W28\sprint\BlazorApp1\obj\Debug\net8.0\refint\BlazorApp1.dll
 Z:\L23Y16W28\sprint\BlazorApp1\obj\Debug\net8.0\BlazorApp1.pdb
 Z:\L23Y16W28\sprint\BlazorApp1\obj\Debug\net8.0\BlazorApp1.genruntimeconfig.cache
 Z:\L23Y16W28\sprint\BlazorApp1\obj\Debug\net8.0\ref\BlazorApp1.dll
+Z:\L23Y16W28\sprint\BlazorApp1\obj\Debug\net8.0\BlazorApp1.sourcelink.json
