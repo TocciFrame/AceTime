@@ -1,29 +1,28 @@
 ﻿@page "/home"
 
-<div class="min-h-screen bg-[#F8FAFC]">
+<div class="min-h-screen bg-[#F8FAFC] font-['Plus_Jakarta_Sans'] text-slate-900">
+    
     <main class="pb-24">
-        <!-- HERO SECTION -->
+        <!-- 1. HERO SECTION -->
         <section class="max-w-7xl mx-auto px-6 pt-8">
-            <div class="relative rounded-[50px] h-[600px] shadow-2xl bg-slate-800 overflow-visible" 
-                 style="background-image: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 70%), url('tennis.jpg'); background-size: cover; background-position: center;">
+            <div class="relative rounded-[50px] h-[600px] shadow-2xl bg-slate-800" 
+                 style="background-image: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 70%), url('tennis.jpg'); background-size: cover; background-position: center;">
                 
-                <!-- Hero Content Wrapper -->
+                <!-- Content Wrapper -->
                 <div class="relative z-10 h-full flex flex-col justify-center px-16">
-                    <!-- Main Headline -->
-                    <h1 class="text-white text-7xl font-[800] leading-[0.95] tracking-tighter max-w-2xl uppercase">
-                        Book your tennis court<br />anytime, anywhere.
+                    <h1 class="text-white text-7xl font-[800] leading-[0.95] tracking-tighter max-w-2xl uppercase italic">
+                        FIND YOUR GAME.<br />ANYTIME, ANYWHERE.
                     </h1>
 
-                    <!-- SUBTEXT & BUTTON WRAPPER -->
-                    <div class="flex flex-col md:flex-row items-end gap-10 mt-8">
-                        <p class="text-gray-200 text-lg max-w-md font-medium leading-relaxed opacity-90">
-                            See real-time availability, compare venues, and pay in seconds — all in one place.
+                    <!-- SUBTEXT & BUTTON WRAPPER (Beside each other) -->
+                    <div class="flex flex-col md:flex-row items-start md:items-end gap-10 mt-8">
+                        <p class="text-gray-200 text-lg max-w-sm font-medium leading-relaxed opacity-90">
+                            Join local clubs, enter community tournaments, and track your progress in the sports you love.
                         </p>
                         
-                        <!-- THE WHITE BUTTON (Beside Text) -->
-                        <a href="#" class="bg-white text-black font-[800] px-10 py-4 rounded-full flex items-center gap-3 shadow-xl hover:bg-gray-100 transition-all group whitespace-nowrap mb-1">
-                            <span class="text-sm uppercase tracking-tight">Find a Court</span>
-                            <div class="bg-black text-white rounded-full p-1.5 flex items-center justify-center font-bold transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                        <a href="/openplays" class="bg-white text-black font-[800] px-10 py-4 rounded-full flex items-center gap-3 shadow-2xl hover:bg-orange-500 hover:text-white transition-all group whitespace-nowrap mb-1">
+                            <span class="text-sm uppercase tracking-tight">Join an Open Play</span>
+                            <div class="bg-black text-white rounded-full p-1.5 flex items-center justify-center font-bold group-hover:bg-white group-hover:text-black">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                             </div>
                         </a>
@@ -34,61 +33,119 @@
                 <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[92%] z-20">
                     <div class="bg-[#0c0c0e] rounded-[32px] p-10 grid grid-cols-3 shadow-2xl border border-white/5">
                         <div class="flex flex-col items-center text-center border-r border-gray-800 px-6">
-                            <span class="text-xl mb-2 text-pink-500">📍</span>
-                            <h4 class="text-white font-bold text-[11px] uppercase tracking-widest">Find a Court</h4>
-                            <p class="text-gray-500 text-[9px] mt-1">Discover nearby courts</p>
+                            <span class="text-xl mb-2">🤝</span>
+                            <h4 class="text-white font-bold text-[11px] uppercase tracking-widest">Join a Club</h4>
+                            <p class="text-gray-500 text-[9px] mt-1">Connect with local players</p>
                         </div>
                         <div class="flex flex-col items-center text-center border-r border-gray-800 px-6">
-                            <span class="text-xl mb-2 text-orange-500">⚡</span>
-                            <h4 class="text-white font-bold text-[11px] uppercase tracking-widest">Book Instantly</h4>
-                            <p class="text-gray-500 text-[9px] mt-1">Confirm and pay safely</p>
+                            <span class="text-xl mb-2">🏅</span>
+                            <h4 class="text-white font-bold text-[11px] uppercase tracking-widest">Compete</h4>
+                            <p class="text-gray-500 text-[9px] mt-1">Enter local tournaments</p>
                         </div>
                         <div class="flex flex-col items-center text-center px-6">
-                            <span class="text-xl mb-2 text-yellow-500">🎾</span>
-                            <h4 class="text-white font-bold text-[11px] uppercase tracking-widest">Play & Enjoy</h4>
-                            <p class="text-gray-500 text-[9px] mt-1">Show code upon arrival</p>
+                            <span class="text-xl mb-2">📈</span>
+                            <h4 class="text-white font-bold text-[11px] uppercase tracking-widest">Rankings</h4>
+                            <p class="text-gray-500 text-[9px] mt-1">Track your match history</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TOURNAMENTS SECTION (Lower part of page) -->
-        <section class="max-w-7xl mx-auto px-6 mt-36">
+        <!-- 2. TOURNAMENTS SECTION (THE CARDS) -->
+        <section class="max-w-7xl mx-auto px-6 mt-40">
             <div class="flex justify-between items-end mb-10">
                 <div>
-                    <span class="bg-orange-50 text-orange-600 px-4 py-1.5 rounded-full text-[10px] font-[900] uppercase border border-orange-100">🏆 Community Tournaments</span>
+                    <span class="bg-orange-50 text-orange-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase border border-orange-100 italic">🏆 Organized Play</span>
                     <h2 class="text-5xl font-[800] mt-4 tracking-tighter uppercase">Compete. Win. Repeat.</h2>
                 </div>
                 <div class="flex gap-3">
-                    <button class="px-6 py-3 border border-slate-200 rounded-xl text-sm font-bold bg-white">Browse All</button>
-                    <button class="px-6 py-3 bg-[#10B981] text-white rounded-xl text-sm font-bold shadow-lg shadow-emerald-200 hover:bg-emerald-600 transition-all">+ Create</button>
+                    <a href="/tournaments" class="px-8 py-3.5 border border-slate-200 rounded-2xl text-sm font-bold bg-white hover:bg-slate-50 transition-all">Browse All</a>
+                    <a href="/create-tournament" class="px-8 py-3.5 bg-[#10B981] text-white rounded-2xl text-sm font-bold shadow-lg hover:bg-emerald-600 transition-all">+ Create</a>
                 </div>
             </div>
 
-            <div class="no-scrollbar gap-8 pb-10">
-                @for(int i=0; i<3; i++) {
-                    <div class="tournament-card min-w-[420px] bg-white border border-slate-100 rounded-[40px] overflow-hidden hover:shadow-2xl transition-all group">
-                        <div class="h-52 relative">
-                            <img src="tennis.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                            <span class="absolute top-5 left-5 bg-orange-500 text-white px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest">Double Elimination</span>
-                        </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-[800] tracking-tight">Brooklyn Summer Slam</h3>
-                            <div class="flex items-center gap-4 mt-3">
-                                <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">🗓️ Aug 9—10, 2026</span>
-                                <span class="bg-orange-50 text-orange-600 px-2 py-1 rounded text-[10px] font-black uppercase tracking-tighter">🏆 Prize $1,200</span>
-                            </div>
-                            <div class="mt-8 border-t border-slate-50 pt-8 flex items-center justify-between">
-                                <div>
-                                    <p class="text-[10px] uppercase font-bold text-slate-400">Entry Fee</p>
-                                    <p class="text-2xl font-black">$80 <span class="text-xs font-medium text-slate-400">/ team</span></p>
-                                </div>
-                                <button class="bg-[#111111] text-white px-8 py-3.5 rounded-2xl text-xs font-bold hover:bg-black transition-all">Register Team →</button>
+            <!-- Horizontal Scrollable Grid -->
+            <div class="flex gap-8 overflow-x-auto pb-12 no-scrollbar scroll-smooth px-2">
+                
+                <!-- Tournament Card 1 -->
+                <a href="/tournaments" class="tournament-card block min-w-[420px] bg-white border border-slate-100 rounded-[40px] overflow-hidden hover:shadow-2xl transition-all group">
+                    <div class="h-60 relative overflow-hidden bg-slate-900">
+                        <img src="tennis.jpeg" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-700" />
+                        <div class="absolute top-6 left-6">
+                            <div class="bg-red-600 text-white px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest animate-pulse flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 bg-white rounded-full"></span> Live Now
                             </div>
                         </div>
                     </div>
-                }
+                    <div class="p-8">
+                        <h3 class="text-2xl font-[800] tracking-tight text-slate-900 uppercase">Brooklyn Summer Slam</h3>
+                        <div class="flex items-center gap-4 mt-3">
+                            <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">🗓️ Aug 9—10, 2026</span>
+                            <span class="bg-orange-50 text-orange-600 px-2 py-1 rounded text-[10px] font-black uppercase tracking-tighter">🏆 Prize $1,200</span>
+                        </div>
+                        <div class="mt-8 pt-8 border-t border-slate-50 flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-slate-400">Entry Fee</p>
+                                <p class="text-2xl font-black text-slate-900">$80 <span class="text-xs font-medium text-slate-400">/ team</span></p>
+                            </div>
+                            <div class="bg-[#111111] text-white px-8 py-3.5 rounded-2xl text-xs font-bold group-hover:bg-orange-600 transition-colors">View Bracket →</div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Tournament Card 2 -->
+                <a href="/tournaments" class="tournament-card block min-w-[420px] bg-white border border-slate-100 rounded-[40px] overflow-hidden hover:shadow-2xl transition-all group">
+                    <div class="h-60 relative overflow-hidden bg-slate-900">
+                        <img src="tennis.jpeg" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-[800] tracking-tight text-slate-900 uppercase">NYC Pickleball Open</h3>
+                        <div class="flex items-center gap-4 mt-3">
+                            <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">🗓️ Aug 23—24, 2026</span>
+                            <span class="bg-orange-50 text-orange-600 px-2 py-1 rounded text-[10px] font-black uppercase tracking-tighter">🏆 Prize $800</span>
+                        </div>
+                        <div class="mt-8 pt-8 border-t border-slate-50 flex items-center justify-between">
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-slate-400">Entry Fee</p>
+                                <p class="text-2xl font-black text-slate-900">$60 <span class="text-xs font-medium text-slate-400">/ team</span></p>
+                            </div>
+                            <div class="bg-[#111111] text-white px-8 py-3.5 rounded-2xl text-xs font-bold group-hover:bg-orange-600 transition-colors">View Bracket →</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 3. STATS RIBBON -->
+        <section class="max-w-7xl mx-auto px-6 mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="bg-white rounded-3xl p-8 border border-slate-50 shadow-sm flex items-center gap-4">
+                <span class="text-2xl">👟</span>
+                <div>
+                    <h4 class="text-2xl font-black">12,400+</h4>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Players</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-3xl p-8 border border-slate-50 shadow-sm flex items-center gap-4">
+                <span class="text-2xl">🎯</span>
+                <div>
+                    <h4 class="text-2xl font-black">847</h4>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Games This Week</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-3xl p-8 border border-slate-50 shadow-sm flex items-center gap-4">
+                <span class="text-2xl">📍</span>
+                <div>
+                    <h4 class="text-2xl font-black">230</h4>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Listed Venues</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-3xl p-8 border border-slate-50 shadow-sm flex items-center gap-4">
+                <span class="text-2xl">⭐</span>
+                <div>
+                    <h4 class="text-2xl font-black">4.8</h4>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Avg Host Rating</p>
+                </div>
             </div>
         </section>
     </main>
