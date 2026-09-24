@@ -1,0 +1,45 @@
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+    [Parameter] public string Title { get; set; } = "Brooklyn Summer Slam";
+    [Parameter] public string Price { get; set; } = "$80.00";
+}
+
+@if (IsVisible)
+{
+    <div class="fixed inset-0 z-[100] flex items-center justify-center p-6 font-['Plus_Jakarta_Sans']">
+        <!-- Backdrop (Dark blur) -->
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md" @onclick="OnClose"></div>
+        
+        <!-- Modal Card -->
+        <div class="relative bg-white rounded-[40px] shadow-2xl w-full max-w-lg overflow-hidden border border-slate-100 animate-in fade-in zoom-in duration-300">
+            <!-- Header Image -->
+            <div class="h-40 bg-slate-900 relative">
+                <img src="/tennis.jpeg" class="w-full h-full object-cover opacity-50" />
+                <button @onclick="OnClose" class="absolute top-6 right-6 text-white bg-black/20 hover:bg-black/50 w-10 h-10 rounded-full flex items-center justify-center transition-all">✕</button>
+            </div>
+            
+            <div class="p-10">
+                <span class="text-[10px] font-black text-orange-500 uppercase tracking-[0.2em] italic">Registration</span>
+                <h3 class="text-3xl font-[800] tracking-tighter mt-2 italic uppercase">@Title</h3>
+                
+                <div class="space-y-4 mt-8">
+                    <div class="flex justify-between border-b border-slate-50 pb-4">
+                        <span class="text-slate-400 font-bold text-[10px] uppercase tracking-widest">Entry Fee</span>
+                        <span class="font-black text-slate-900 text-lg">@Price</span>
+                    </div>
+                    <div class="flex justify-between border-b border-slate-50 pb-4">
+                        <span class="text-slate-400 font-bold text-[10px] uppercase tracking-widest">Skill Level</span>
+                        <span class="font-black text-emerald-500 italic uppercase">4.0+ Verified</span>
+                    </div>
+                </div>
+
+                <!-- Final Action -->
+                <button @onclick="OnClose" class="w-full py-5 bg-[#111111] text-white rounded-2xl font-black uppercase tracking-widest mt-10 hover:bg-orange-600 transition-all shadow-xl shadow-orange-500/20 active:scale-95">
+                    Confirm & Pay
+                </button>
+                <p class="text-center text-[9px] text-slate-400 uppercase font-bold mt-4 tracking-widest">No refunds within 24h of event</p>
+            </div>
+        </div>
+    </div>
+}

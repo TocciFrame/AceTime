@@ -1,24 +1,72 @@
 ﻿@page "/home"
+@using BlazorApp1.Components.Shared
+@rendermode InteractiveServer
+
+@code {
+    // 1. DATA MODELS
+    public class Tournament {
+        public string Name { get; set; }
+        public string Price { get; set; }
+        public string Venue { get; set; }
+        public string Format { get; set; }
+        public string ImageUrl { get; set; }
+        public bool IsLive { get; set; }
+    }
+
+    public class Activity {
+        public string PlayerName { get; set; }
+        public string Action { get; set; }
+        public string Target { get; set; }
+        public string TimeAgo { get; set; }
+        public string AvatarUrl { get; set; }
+        public string Icon { get; set; }
+    }
+
+    // 2. MODAL STATE LOGIC
+    private bool showJoinModal = false;
+    private string selectedTournament = "";
+    private string selectedPrice = "";
+    
+    private void OpenModal(string name, string price) 
+    {
+        selectedTournament = name;
+        selectedPrice = price;
+        showJoinModal = true;
+    }
+    
+    private void CloseModal() => showJoinModal = false;
+
+    // 3. DYNAMIC DATA LISTS
+    private List<Tournament> Tournaments = new() {
+        new Tournament { Name = "Brooklyn Summer Slam", Price = "$80", Venue = "McCarren Park", Format = "Double Elim", ImageUrl = "/tennis.jpeg", IsLive = true },
+        new Tournament { Name = "NYC Pickleball Open", Price = "$60", Venue = "East River Park", Format = "Round Robin", ImageUrl = "/tennis.jpeg", IsLive = false },
+        new Tournament { Name = "Queens Classic", Price = "$120", Venue = "Astoria Park", Format = "Single Elim", ImageUrl = "/tennis.jpeg", IsLive = false }
+    };
+
+    private List<Activity> SidelineUpdates = new() {
+        new Activity { PlayerName = "Marcus Wright", Action = "joined", Target = "4.0 Singles", TimeAgo = "2m ago", AvatarUrl = "https://i.pravatar.cc/100?u=1" },
+        new Activity { PlayerName = "Brooklyn Aces", Action = "posted", Target = "4 New Open Plays", TimeAgo = "3h ago", Icon = "🏙️" },
+        new Activity { PlayerName = "Sarah Chen", Action = "won", Target = "6-2, 6-4 vs. Elena G.", TimeAgo = "5h ago", AvatarUrl = "https://i.pravatar.cc/100?u=2" }
+    };
+}
 
 <div class="min-h-screen bg-[#F8FAFC] font-['Plus_Jakarta_Sans'] text-slate-900">
     <main class="max-w-[1600px] mx-auto px-6 py-8">
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <!-- LEFT & CENTER: MAIN CONTENT (9 Columns) -->
+            <!-- LEFT & CENTER: MAIN CONTENT -->
             <div class="lg:col-span-9 space-y-24">
                 
                 <!-- HERO SECTION -->
                 <section class="relative rounded-[50px] h-[550px] shadow-2xl bg-slate-800" 
-                         style="background-image: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 70%), url('/tennis.jpg'); background-size: cover; background-position: center;">
+                         style="background-image: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 70%), url('/tennis.jpeg'); background-size: cover; background-position: center;">
                     
-                    <!-- Hero Content Wrapper -->
                     <div class="relative z-10 h-full flex flex-col justify-center px-12">
                         <h1 class="text-white text-6xl font-[800] leading-[0.95] tracking-tighter max-w-xl uppercase italic">
                             FIND YOUR GAME.<br />ANYTIME, ANYWHERE.
                         </h1>
 
-                        <!-- SUBTEXT & BUTTON WRAPPER -->
                         <div class="flex flex-col md:flex-row items-start md:items-end gap-8 mt-8">
                             <p class="text-gray-200 text-sm max-w-sm font-medium opacity-90 leading-relaxed">
                                 Join local clubs, enter community tournaments, and track your progress in the sports you love.
@@ -33,22 +81,22 @@
                         </div>
                     </div>
 
-                    <!-- THE STATS BAR: RE-INTEGRATED -->
+                    <!-- THE STATS BAR -->
                     <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 w-[90%] z-20">
                         <div class="bg-[#0c0c0e] rounded-[32px] p-8 grid grid-cols-3 shadow-2xl border border-white/5">
-                            <div class="flex flex-col items-center text-center border-r border-gray-800 px-4">
+                            <div class="flex flex-col items-center text-center border-r border-gray-800 px-4 text-white">
                                 <span class="text-xl mb-1">🤝</span>
-                                <h4 class="text-white font-bold text-[10px] uppercase tracking-widest">Join a Club</h4>
+                                <h4 class="font-bold text-[10px] uppercase tracking-widest">Join a Club</h4>
                                 <p class="text-gray-500 text-[8px] mt-1">Connect with players</p>
                             </div>
-                            <div class="flex flex-col items-center text-center border-r border-gray-800 px-4">
+                            <div class="flex flex-col items-center text-center border-r border-gray-800 px-4 text-white">
                                 <span class="text-xl mb-1">🏅</span>
-                                <h4 class="text-white font-bold text-[10px] uppercase tracking-widest">Compete</h4>
+                                <h4 class="font-bold text-[10px] uppercase tracking-widest">Compete</h4>
                                 <p class="text-gray-500 text-[8px] mt-1">Live tournaments</p>
                             </div>
-                            <div class="flex flex-col items-center text-center px-4">
+                            <div class="flex flex-col items-center text-center px-4 text-white">
                                 <span class="text-xl mb-1">📈</span>
-                                <h4 class="text-white font-bold text-[10px] uppercase tracking-widest">Rankings</h4>
+                                <h4 class="font-bold text-[10px] uppercase tracking-widest">Rankings</h4>
                                 <p class="text-gray-500 text-[8px] mt-1">Track progress</p>
                             </div>
                         </div>
@@ -68,35 +116,40 @@
                         </div>
                     </div>
 
-                    <!-- Horizontal Scroll Grid -->
+                    <!-- Horizontal Scroll Grid - NOW USING DYNAMIC LIST -->
                     <div class="flex gap-6 overflow-x-auto pb-12 no-scrollbar scroll-smooth px-2">
-                        @for(int i=0; i<3; i++) {
-                            <a href="/tournaments" class="tournament-card block min-w-[380px] bg-white border border-slate-100 rounded-[40px] overflow-hidden hover:shadow-2xl transition-all group">
+                        @foreach(var item in Tournaments) {
+                            <div class="tournament-card block min-w-[380px] bg-white border border-slate-100 rounded-[40px] overflow-hidden hover:shadow-2xl transition-all group">
                                 <div class="h-48 relative overflow-hidden bg-slate-900">
-                                    <img src="/tennis.jpeg" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-700" />
-                                    <div class="absolute top-5 left-5">
-                                        <div class="bg-red-600 text-white px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest animate-pulse flex items-center gap-2">
-                                            <span class="w-1.5 h-1.5 bg-white rounded-full"></span> Live
+                                    <img src="@item.ImageUrl" class="w-full h-full object-cover opacity-70 group-hover:scale-110 transition-transform duration-700" />
+                                    @if(item.IsLive) {
+                                        <div class="absolute top-5 left-5">
+                                            <div class="bg-red-600 text-white px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest animate-pulse flex items-center gap-2">
+                                                <span class="w-1.5 h-1.5 bg-white rounded-full"></span> Live
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
                                 </div>
                                 <div class="p-6">
-                                    <h3 class="text-xl font-[800] tracking-tight text-slate-900 uppercase">Brooklyn Slam</h3>
-                                    <div class="flex items-center gap-4 mt-3 border-t border-slate-50 pt-6 justify-between">
+                                    <h3 class="text-xl font-[800] tracking-tight text-slate-900 uppercase">@item.Name</h3>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase mt-1">📍 @item.Venue • @item.Format</p>
+                                    <div class="flex items-center gap-4 mt-6 border-t border-slate-50 pt-6 justify-between">
                                         <div>
                                             <p class="text-[9px] uppercase font-bold text-slate-400">Entry Fee</p>
-                                            <p class="text-xl font-black text-slate-900">$80</p>
+                                            <p class="text-xl font-black text-slate-900">@item.Price</p>
                                         </div>
-                                        <div class="bg-[#111111] text-white px-6 py-2.5 rounded-xl text-[10px] font-bold group-hover:bg-orange-600 transition-colors">View Bracket</div>
+                                        <button @onclick='() => OpenModal(item.Name, item.Price)' class="bg-[#111111] text-white px-6 py-2.5 rounded-xl text-[10px] font-bold group-hover:bg-orange-600 transition-colors">
+                                            Register Now
+                                        </button>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         }
                     </div>
                 </section>
             </div>
 
-            <!-- RIGHT: THE SIDELINE (3 Columns) -->
+            <!-- RIGHT SIDEBAR (THE SIDELINE) - NOW USING DYNAMIC LIST -->
             <aside class="lg:col-span-3 space-y-6 pt-2">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-xs font-[900] uppercase italic tracking-[0.2em] text-slate-400 flex items-center gap-2">
@@ -109,24 +162,29 @@
                 </div>
 
                 <div class="space-y-4">
-                    <div class="bg-white border border-slate-100 p-4 rounded-3xl shadow-sm hover:border-orange-200 transition-all cursor-pointer">
-                        <div class="flex gap-3">
-                            <img src="https://i.pravatar.cc/100?u=1" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" />
-                            <div class="flex-1">
-                                <p class="text-[11px] leading-tight"><span class="font-black text-slate-900">Marcus W.</span> joined <span class="font-black text-orange-500">4.0 Singles</span></p>
-                                <p class="text-[9px] font-bold text-slate-400 mt-1 uppercase">2m ago</p>
+                    @foreach (var activity in SidelineUpdates)
+                    {
+                        <div class="bg-white border border-slate-100 p-4 rounded-3xl shadow-sm hover:border-orange-200 transition-all cursor-pointer">
+                            <div class="flex gap-3">
+                                @if (!string.IsNullOrEmpty(activity.AvatarUrl))
+                                {
+                                    <img src="@activity.AvatarUrl" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" />
+                                }
+                                else
+                                {
+                                    <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-sm shadow-sm">@activity.Icon</div>
+                                }
+                                
+                                <div class="flex-1">
+                                    <p class="text-[11px] leading-tight">
+                                        <span class="font-black text-slate-900">@activity.PlayerName</span> @activity.Action 
+                                        <span class="font-black text-orange-500">@activity.Target</span>
+                                    </p>
+                                    <p class="text-[9px] font-bold text-slate-400 mt-1 uppercase">@activity.TimeAgo</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="bg-white border border-slate-100 p-4 rounded-3xl shadow-sm hover:border-orange-200 transition-all cursor-pointer">
-                        <div class="flex gap-3 text-slate-900">
-                            <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-sm shadow-sm">🏙️</div>
-                            <div class="flex-1">
-                                <p class="text-[11px] leading-tight"><span class="font-black text-slate-900">Brooklyn Aces</span> posted 4 new <span class="text-orange-500 font-bold underline">Open Plays</span></p>
-                                <p class="text-[9px] font-bold text-slate-400 mt-1 uppercase">3h ago</p>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </aside>
         </div>
@@ -162,6 +220,8 @@
                 </div>
             </div>
         </section>
-
     </main>
 </div>
+
+<!-- MODAL COMPONENT -->
+<JoinModal IsVisible="showJoinModal" OnClose="CloseModal" Title="@selectedTournament" Price="@selectedPrice" />
