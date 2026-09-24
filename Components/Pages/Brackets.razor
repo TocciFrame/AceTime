@@ -1,0 +1,57 @@
+@page "/bracket/{TournamentId}"
+
+<div class="min-h-screen bg-[#0F172A] text-white p-12">
+    <!-- Breadcrumb & Back -->
+    <a href="/tournaments" class="text-slate-500 font-bold text-xs uppercase tracking-widest hover:text-white transition-colors mb-8 inline-block">
+        ← Back to Discovery
+    </a>
+
+    <header class="mb-16">
+        <h1 class="text-5xl font-[800] tracking-tighter uppercase">Brooklyn Summer Slam</h1>
+        <div class="flex gap-4 mt-4">
+            <span class="border border-slate-700 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">Quarter Finals</span>
+            <span class="text-emerald-400 text-[10px] font-bold uppercase tracking-widest py-2">● Live Updates Enabled</span>
+        </div>
+    </header>
+
+    <!-- VISUAL BRACKET NODES -->
+    <div class="flex items-center gap-20 overflow-x-auto no-scrollbar pb-20">
+        <!-- Quarter Finals -->
+        <div class="flex flex-col gap-8">
+            @for(int i=0; i<4; i++) {
+                <div class="w-64 space-y-0.5 group cursor-pointer">
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-t-xl flex justify-between group-hover:border-emerald-500/50 transition-colors">
+                        <span class="text-sm font-bold text-slate-400">Team A</span>
+                        <span class="font-black">21</span>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-b-xl flex justify-between border-l-4 border-l-emerald-500">
+                        <span class="text-sm font-bold">Team B</span>
+                        <span class="font-black text-emerald-500">23</span>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Connection -->
+        <div class="flex flex-col gap-32 pt-24">
+            @for(int i=0; i<2; i++) {
+                <div class="w-64 h-32 border-y-2 border-r-2 border-slate-800 rounded-r-3xl relative">
+                    <div class="absolute -right-4 top-1/2 w-4 h-0.5 bg-slate-800"></div>
+                </div>
+            }
+        </div>
+
+        <!-- Semi Finals -->
+        <div class="flex flex-col gap-40 pt-12">
+            @for(int i=0; i<2; i++) {
+                <div class="w-64 bg-white/5 border border-white/10 rounded-2xl p-6 text-center italic text-slate-500 font-bold uppercase tracking-tighter">
+                    TBD
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string TournamentId { get; set; }
+}
